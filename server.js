@@ -36,6 +36,13 @@ io.on('connection', (socket) => {
     });
 });
 
-server.listen(3001, () => {
-    console.log('SERVER RUNNING');
-});
+// Only start the server if running directly (local dev)
+// Vercel handles the server start automatically
+if (require.main === module) {
+    server.listen(3001, () => {
+        console.log('SERVER RUNNING');
+    });
+}
+
+module.exports = app;
+
